@@ -30,8 +30,10 @@ $payload = json_encode( $data );
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
 curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', $key . $value));
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-$result = json_decode( curl_exec($ch) , true);
-
+$result = (array) json_decode( curl_exec($ch) , true);
+foreach ($results->statuses as $tweet) {
+    $result['document_tone']['tone_categories'][3]['tweets'][] = $tweet->text;
+}
 echo json_encode($result['document_tone']['tone_categories']);
 
 function search(array $query)

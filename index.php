@@ -129,6 +129,13 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Stores the emotional tone canvas -->
+            <div class="row">
+                <div class="col-lg-12 col-centered" id="tweets">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -169,7 +176,7 @@ $( "#submit" ).click(function() {
 
     request.done(function(msg) {
         var result = eval(msg);
-
+        
         // emotion tone
         var anger = result[0]["tones"][0]["score"];
         var disgust = result[0]["tones"][1]["score"];
@@ -302,6 +309,14 @@ $( "#submit" ).click(function() {
                 }
             }
         });
+
+        var innerText = "";
+        for (var tweetKey in result[3]["tweets"]) {
+            var tweet = result[3]["tweets"][tweetKey];
+            var html = '<div class="panel"> <div class="panel-body"> ' + tweet + ' <br> </div> </div> <br>';
+            innerText += html;
+        }
+        $("#tweets").html(innerText);
 
         $('#loader1').remove();
         $('#loader2').remove();
