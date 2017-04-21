@@ -22,7 +22,7 @@ foreach ($results->statuses as $result) {
 }
 
 $key = "Authorization: Basic ";
-$value = "OTA2YjhkNGItYTMxNS00NGUyLWExZjUtYWZkOGZkNzQ3YmJhOmtoa1BCZ3FJSjBYSg==";
+$value = "Y2ZmN2IwODEtN2RjNS00YzMyLWJkYjctMjVmMDIxMGQ1OWZmOjBWMXlLaGZzWmRSMQ==";
 $url = "https://watson-api-explorer.mybluemix.net/tone-analyzer/api/v3/tone?version=2016-05-19";
 $data = array('text' => $text);
 $ch = curl_init( $url );
